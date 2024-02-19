@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Programmirovanie\\Program\\DemonstrationExam\\RULEtraining\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9EDF7C0C-5DD3-4BE6-B54F-EF39B9C3D603}|RULEtraining\\RULEtraining.csproj|d:\\programmirovanie\\program\\demonstrationexam\\ruletraining\\ruletraining\\pages\\authpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF7C0C-5DD3-4BE6-B54F-EF39B9C3D603}|RULEtraining\\RULEtraining.csproj|solutionrelative:ruletraining\\pages\\authpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EDF7C0C-5DD3-4BE6-B54F-EF39B9C3D603}|RULEtraining\\RULEtraining.csproj|d:\\programmirovanie\\program\\demonstrationexam\\ruletraining\\ruletraining\\model\\authorization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF7C0C-5DD3-4BE6-B54F-EF39B9C3D603}|RULEtraining\\RULEtraining.csproj|solutionrelative:ruletraining\\model\\authorization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2B1AB105-EE74-49CE-B5D4-2AFA15FA7FDC}|UnitTestTraining\\UnitTestTraining.csproj|d:\\programmirovanie\\program\\demonstrationexam\\ruletraining\\unittesttraining\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B1AB105-EE74-49CE-B5D4-2AFA15FA7FDC}|UnitTestTraining\\UnitTestTraining.csproj|solutionrelative:unittesttraining\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Authorization.cs",
+              "DocumentMoniker": "D:\\Programmirovanie\\Program\\DemonstrationExam\\RULEtraining\\RULEtraining\\model\\Authorization.cs",
+              "RelativeDocumentMoniker": "RULEtraining\\model\\Authorization.cs",
+              "ToolTip": "D:\\Programmirovanie\\Program\\DemonstrationExam\\RULEtraining\\RULEtraining\\model\\Authorization.cs",
+              "RelativeToolTip": "RULEtraining\\model\\Authorization.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-19T06:16:46.391Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthPage.xaml.cs",
+              "DocumentMoniker": "D:\\Programmirovanie\\Program\\DemonstrationExam\\RULEtraining\\RULEtraining\\pages\\AuthPage.xaml.cs",
+              "RelativeDocumentMoniker": "RULEtraining\\pages\\AuthPage.xaml.cs",
+              "ToolTip": "D:\\Programmirovanie\\Program\\DemonstrationExam\\RULEtraining\\RULEtraining\\pages\\AuthPage.xaml.cs",
+              "RelativeToolTip": "RULEtraining\\pages\\AuthPage.xaml.cs",
+              "ViewState": "AQIAAIwAAAAAAAAAAAAcwJgAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-19T05:59:32.905Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "D:\\Programmirovanie\\Program\\DemonstrationExam\\RULEtraining\\UnitTestTraining\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "UnitTestTraining\\UnitTest1.cs",
+              "ToolTip": "D:\\Programmirovanie\\Program\\DemonstrationExam\\RULEtraining\\UnitTestTraining\\UnitTest1.cs",
+              "RelativeToolTip": "UnitTestTraining\\UnitTest1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-19T05:59:19.816Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

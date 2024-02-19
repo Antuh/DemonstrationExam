@@ -1,0 +1,134 @@
+--1 query
+USE [Urban public transport]
+GO
+--При выборе вида городского общественного транспорта, выводится информация о всех маршрутах этого вида транспорта в порядке возрастания номера маршрута;
+SELECT TipesOfTransport.ID_TipesOfTransport, TipesOfTransport.NameOfTransport, Route.ID_Route, RouteNumber, Path.Start_following, Path.End_following
+FROM [TipesOfTransport] JOIN [Route] JOIN [Path]
+ON Path.ID_Path = Route.ID_Path
+ON Route.ID_Path = TipesOfTransport.ID_TipesOfTransport
+WHERE ID_TipesOfTransport = 1
+
+--2 query
+--Вывод подробных характеристик маршрутов и типа транспорта, проходящего через выбранную остановку;
+SELECT Route.RouteNumber, PublicTransportStops.ID_PublicTransportStops, PublicTransportStops.Name, TipesOfTransport.NameOfTransport, PublicTransportStops.Time, 
+PublicTransportStops.Location
+FROM [PublicTransportStops] JOIN [Route] JOIN [TipesOfTransport] JOIN [TransportExitShedule]
+ON TransportExitShedule.ID_TransportExitSchedule = TipesOfTransport.ID_TipesOfTransport
+ON TipesOfTransport.ID_TipesOfTransport = Route.ID_Carrier
+ON Route.ID_Carrier = PublicTransportStops.ID_Pavilion
+WHERE PublicTransportStops.ID_PublicTransportStops = 2
+
+--3 query
+USE [Urban public transport]
+GO
+--Вывод  информации о расписании движения заданного маршрута транспорта маршрута (время прибытия и отправления, дни следования);
+SELECT Route.ID_Route, RouteNumber, PublicTransportStops.ID_PublicTransportStops, PublicTransportStops.Name, PublicTransportStops.Time, Path.Start_following, Path.End_following,
+Route.Days_of_travel
+FROM [Route] JOIN [PublicTransportStops] JOIN [Path]
+ON Path.ID_Path = PublicTransportStops.ID_PublicTransportStops
+ON PublicTransportStops.ID_PublicTransportStops = Route.ID_Route
+WHERE Route.ID_Route = 1
+
+--4 query
+USE [Urban public transport]
+GO
+--Вывод полной информации о маршруте (путь следования, остановки);
+SELECT Route.RouteNumber,PublicTransportStops.Location,PublicTransportStops.Name
+FROM [Route] JOIN [PublicTransportStops]
+ON Route.ID_Route = PublicTransportStops.ID_Route
+
+--5 query
+USE [Urban public transport]
+GO
+--Вывод  количества маршрутов, проходящих через заданную остановку, и информации о наличии на остановке павильона.
+SELECT Route.RouteNumber, PublicTransportStops.ID_PublicTransportStops, PublicTransportStops.Name, Pavilion.Description,TransportExitShedule.Flight
+FROM [PublicTransportStops] JOIN [Route] JOIN [Pavilion] JOIN [TransportExitShedule]
+ON TransportExitShedule.ID_TransportExitSchedule = Pavilion.ID_Pavilion
+ON Pavilion.ID_Pavilion = Route.ID_Carrier
+ON Route.ID_Carrier = PublicTransportStops.ID_Pavilion
+WHERE PublicTransportStops.ID_PublicTransportStops = 1
+
+--6 query
+USE [Urban public transport]
+GO
+--Вывод информации о выбранном рейсе – остановку, время прибытия и отправления, время движения и пройденную длину от начальной остановки.
+SELECT Route.RouteNumber, PublicTransportStops.ID_PublicTransportStops, PublicTransportStops.Name, PublicTransportStops.Time, Route.RouteNumber, Route.TravelTime, 
+Path.Start_following, Path.End_following
+FROM [TransportExitShedule] JOIN [PublicTransportStops] JOIN [Route] JOIN [Path]
+ON Path.ID_Path = Route.ID_Route
+ON Route.ID_Route = PublicTransportStops.ID_PublicTransportStops
+ON PublicTransportStops.ID_PublicTransportStops = TransportExitShedule.ID_TransportExitSchedule
+WHERE Route.ID_Route = 2
+
+--7 query
+USE [Urban public transport]
+GO
+--Вывод информации о маршруте (перевозчик и вид транспорта);
+SELECT Route.RouteNumber, Carrier.Surname, Carrier.Name, Carrier.Patronymic, TipesOfTransport.NameOfTransport
+FROM [Route] JOIN [Carrier] JOIN [TransportExitShedule] JOIN [TipesOfTransport]
+ON TransportExitShedule.ID_TipesOfTransport = TipesOfTransport.ID_TipesOfTransport
+ON Carrier.ID_TransportExitSchedule = TransportExitShedule.ID_TipesOfTransport
+ON Carrier.ID_Carrier = Route.ID_Carrier
+
+--8 query
+USE [Urban public transport]
+GO
+--Вывод полной информации о маршрутах, принадлежащих выбранному перевозчику;
+SELECT Route.RouteNumber, Carrier.ID_Carrier, Carrier.Surname, Carrier.Name, Route.TravelTime, Route.Days_of_travel
+FROM [Carrier] JOIN [Route]
+ON Route.ID_Carrier = Carrier.ID_Carrier
+WHERE Carrier.ID_Carrier = 1
+
+--9 query
+USE [Urban public transport]
+GO
+--Добавление нового пользователя;
+INSERT INTO[Employees]
+([ID_Employees],[ID_Route],[Surname],[Name],[Patronymic],[ID_Post],[ID_Group])
+VALUES
+(10,3,'Сидоров','Алексей','Кириллович',1,2)
+
+--10 query
+USE [Urban public transport]
+GO
+--Изменение статуса пользователей своей группы;
+UPDATE[Employees]
+SET
+[Status] = 'На работе'
+WHERE [ID_Group]=2 
+
+--11 query
+USE [Urban public transport]
+GO
+--Создание новой группы пользователей;
+INSERT INTO[Group]
+([ID_Group],[Name])
+VALUES
+(6,'Шестая группа')
+
+--13 query
+USE [Urban public transport]
+GO
+--Вывод маршрутов, которые не вышли в рейс по расписанию, с указанием причины;
+SELECT Route.RouteNumber, Change.ID_Change, Change.Description
+FROM [Route] JOIN [Carrier]  JOIN [TipesOfTransport] JOIN [Change]
+ON Change.ID_Change = Change.ID_Change
+ON Change.ID_Change = Carrier.ID_TransportExitSchedule
+ON Carrier.ID_TransportExitSchedule = Route.ID_Route
+
+--15 query
+--Сформировать в отдельную таблицу о рейсах, не вышедших вовремя в рейс, с указанием даты и причины;
+SELECT TOP (1000) [ID_Change]
+      ,[Date]
+      ,[Time]
+      ,[Description]
+  FROM [Urban public transport].[dbo].[Change]
+
+--16 query
+--Если пробелы в PhotoPath и т.д;
+USE [Test]
+GO
+UPDATE Service
+SET MainImagePath = SUBSTRING(MainImagePath, LEN(' Услуги салона красоты\') + 1, LEN(MainImagePath))
+WHERE MainImagePath LIKE ' Услуги салона красоты\%';
+GO
